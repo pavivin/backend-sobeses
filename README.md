@@ -1,12 +1,14 @@
 # Вопросы к собесам
 
+
 ## [Базы данных](database)
 * [relational](database/relational/)
 * [no-sql](database/no-sql/)
 
+
 ## [Общее](common)
 * [Архитектурные паттерны](common/architecture-patterns)
-* [Паттерны проектирование](common/architecture-patterns)
+* [Структурные паттерны](common/structure-patterns)
 
 ## [Web](web)
 * [REST](web/rest.md)
@@ -21,3 +23,5 @@
   * [3.9](python/versions/3.9.md)
   * [3.10](python/versions/3.10.md)
   * [3.11](python/versions/3.11.md)
+
+## [Брокеры сообщений](brokers)

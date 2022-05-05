@@ -2,21 +2,70 @@
 
 
 ## [Базы данных](database)
-* [relational](database/relational/)
-* [no-sql](database/no-sql/)
+* [Общее](database/common)
+  * [CAP](database/common/cap.md)
+  * [SQL vs NoSQL](database/common/sql-vs-no-sql.md)
+* [Реляционные](database/relational/)
+  * [ACID](database/relational/acid.md)
+  * [Индексы](database/relational/indexes.md)
+  * [Нормализация / Денормализация](database/relational/normal.md)
+  * [Транзакции](database/relational/transactions.md)
+    * Изоляции
+    * Блокировки
+* [NoSQL](database/no-sql/)
+  * [Redis](database/no-sql/redis.md)
+  * [MongoDB](database/no-sql/mongo-db.md)
 
 
 ## [Общее](common)
+* [ООП](common/oop.md)
+* [SOLID](common/solid.md)
 * [Архитектурные паттерны](common/architecture-patterns)
+  * [MVC](common/architecture-patterns/mvc.md)
 * [Структурные паттерны](common/structure-patterns)
+* [Методологии разработки](common/methodology)
+  * [TDD](common/methodology/tdd.md)
+  * [DDD](common/methodology/ddd.md)
 
 ## [Web](web)
 * [REST](web/rest.md)
+* [GraphQL](web/graphql.md)
+* [RPC](web/rpc.md)
+* [Socket](web/socket.md)
+* [Polling](web/polling.md)
+* [HTTP](web/http.md)
+* [CORS](web/cors.md)
+* [Throttle](web/throttle.md)
+  * Debouncing
 
 ## [Безопасность](security)
-* [CORS](security/cors.md)
+* [JWT](security/jwt.md)
+* [SSL](security/ssl.md)
+* [CSRF](security/csrf.md)
+* [SQL-инъекции](security/sql-injections.md)
 
 ## [Python](python)
+* [Общее](python/common)
+  * [Асинхронность](python/common/async.md)
+  * [Мультипоточность](python/common/threading.md)
+    * GIL
+  * [Генераторы](python/common/generators.md)
+  * [Декораторы](python/common/decorators.md)
+  * [Контекстные менеджеры](python/common/context-manager.md)
+  * [Функциональные элементы](python/common/functional.md)
+  * [Классы](python/common/classes.md)
+    * Наследование
+    * Абстрактные классы
+    * Метаклассы
+    * Датаклассы
+    * Методы
+* [Производительность](python/perfomance)
+  * [Память](python/perfomance/memory.md)
+  * [Общее](python/perfomance/init.md)
+  * [Иммутабельность](python/perfomance/immutables.md)
+  * [C-расширения](python/perfomance/c.md)
+  * [Стандартные решения](python/perfomance/standart.md)
+* [Сахар](python/sugar.md)
 * [Справка по версиям](python/versions)
   * [3.7](python/versions/3.7.md)
   * [3.8](python/versions/3.8.md)

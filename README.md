@@ -74,3 +74,6 @@
   * [3.11](python/versions/3.11.md)
 
 ## [Брокеры сообщений](brokers)
+* [Общее](brokers/common.md)
+* [RabbitMQ](brokers/rabbitmq.md)
+* [Kafka](brokers/kafka.md)

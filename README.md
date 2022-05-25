@@ -53,11 +53,11 @@
   * [Декораторы](python/common/decorators.md)
   * [Контекстные менеджеры](python/common/context-manager.md)
   * [Функциональные элементы](python/common/functional.md)
-  * [Классы](python/common/classes.md)
+  * [Классы](python/common/classes)
     * Наследование
     * Абстрактные классы
     * Метаклассы
-    * Датаклассы
+    * [Датаклассы](python/common/classes/dataclasses.md)
     * Методы
 * [Производительность](python/perfomance)
   * [Память](python/perfomance/memory.md)

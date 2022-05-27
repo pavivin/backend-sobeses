@@ -211,7 +211,7 @@ print(first_person == second_person)
 
 Тут вам на помощь приходит функция `field` из `dataclasses`.
 
-С помощью этой функции и установки аргументов `itsinit` и `repr` в `False` при создании нового поля с именем `full_name`, мы все равно сможем создать экземпляр класса `Person` без установки атрибута `full_name`.
+С помощью этой функции и установки аргументов `init` и `repr` в `False` при создании нового поля с именем `full_name`, мы все равно сможем создать экземпляр класса `Person` без установки атрибута `full_name`.
 ```python
 from dataclasses import dataclass, field
 

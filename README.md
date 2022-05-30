@@ -48,7 +48,7 @@
 * [Общее](python/common)
   * [Асинхронность](python/common/async.md)
   * [Мультипоточность](python/common/threading)
-    * [GIL](python/common/theading/gil.md)
+    * [GIL](python/common/threading/gil.md)
   * [Генераторы](python/common/generators.md)
   * [Декораторы](python/common/decorators.md)
   * [Контекстные менеджеры](python/common/context-manager.md)

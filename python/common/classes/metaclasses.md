@@ -491,15 +491,11 @@ class SingletonBase:
 Вот что получается:
 ```python
 class SingletonMeta(type):
-    def __init__(cls, name, bases, namespace):
-        super().__init__(name, bases, namespace)
-        cls.instance = None
-
+    _instances = {}
     def __call__(cls, *args, **kwargs):
-        if cls.instance is None:
-            cls.instance = super().__call__(*args, **kwargs)
-
-        return cls.instance
+        if cls not in cls._instances:
+            cls._instances[cls] = super(SingletonMeta, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
 
 class SingletonBaseMeta(metaclass=SingletonMeta):

@@ -61,7 +61,7 @@
   * [Классы](python/common/classes)
     * Наследование (Не готов)
     * Абстрактные классы (Не готов)
-    * Метаклассы (Не готов)
+    * [Метаклассы](python/common/classes/metaclasses.md) (Ревью)
     * [Датаклассы](python/common/classes/dataclasses.md) (Проверен)
     * Методы (Не готов)
 * [Производительность](python/perfomance)

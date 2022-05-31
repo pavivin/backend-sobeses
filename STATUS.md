@@ -64,6 +64,6 @@
 | [3.10](python/versions/3.10.md)                                | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [3.11](python/versions/3.11.md)                                | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [Брокеры. Общее](brokers/common.md)                            | 👨‍🔬       | ❌       | ❌              | ❌      |
-| [RabbitMQ](brokers/rabbitmq.md)                                | 👨‍🔬       | ❌       | ❌              | ❌      |
-| [Exchanges](brokers/rabbitmq/exchanges.md)                     | 👨‍🔬       | ❌       | ❌              | ❌      |
+| [RabbitMQ](brokers/rabbitmq.md)                                | 👨‍🔬       | ✅       | ❌              | ❌      |
+| [Exchanges](brokers/rabbitmq/exchanges.md)                     | 👨‍🔬       | ✅       | ❌              | ❌      |
 | [Kafka](brokers/kafka.md)                                      | 👨‍🔬       | ❌       | ❌              | ❌      |

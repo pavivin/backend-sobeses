@@ -1,5 +1,5 @@
 # База знаний
-
+[Статус по темам](STATUS.md)
 
 ## [Базы данных](database)
 * [Общее](database/common)
@@ -12,7 +12,7 @@
   * [Транзакции](database/relational/transactions.md) (Не готов)
     * Изоляции (Не готов)
     * Блокировки (Не готов)
-* [NoSQL](database/no-sql/) (Не готов)
+* [NoSQL](database/no-sql) (Не готов)
   * [Redis](database/no-sql/redis.md) (Не готов)
   * [MongoDB](database/no-sql/mongo-db.md) (Не готов)
 

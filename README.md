@@ -22,7 +22,7 @@
 * [SOLID](common/solid.md) (Не готов)
 * [Архитектурные паттерны](common/architecture-patterns)
   * [MVC](common/architecture-patterns/mvc.md) (В процессе)
-* [Структурные паттерны](common/structure-patterns)
+* [Структурные паттерны](common/structure-patterns) (В процессе)
 * [Методологии разработки](common/methodology)
   * [TDD](common/methodology/tdd.md) (Не готов)
   * [DDD](common/methodology/ddd.md) (Не готов)

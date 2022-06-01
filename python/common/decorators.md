@@ -47,7 +47,7 @@ except NameError, e:
     print e
     #выведет: "name 'shout' is not defined"
  
-print scream()
+print(scream())
 # выведет: 'Да!'
 ```
 

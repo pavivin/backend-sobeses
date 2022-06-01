@@ -56,7 +56,7 @@
     * [GIL](python/common/threading/gil.md) (Проверен)
   * [Генераторы](python/common/generators.md) (Проверен)
   * [Декораторы](python/common/decorators.md) (Ревью)
-  * [Контекстные менеджеры](python/common/context-manager.md) (Не готов)
+  * [Контекстные менеджеры](python/common/context-manager.md) (Ревью)
   * [Функциональные элементы](python/common/functional.md) (Не готов)
   * [Классы](python/common/classes)
     * Наследование (Не готов)

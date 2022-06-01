@@ -60,7 +60,7 @@
   * [Функциональные элементы](python/common/functional.md) (Не готов)
   * [Классы](python/common/classes)
     * Наследование (Не готов)
-    * Абстрактные классы (Не готов)
+    * [Абстрактные классы](python/common/classes/abstract_base_classes.md) (Ревью)
     * [Метаклассы](python/common/classes/metaclasses.md) (Ревью)
     * [Датаклассы](python/common/classes/dataclasses.md) (Проверен)
     * Методы (Не готов)

@@ -42,8 +42,7 @@
 | [SSL](security/ssl.md)                                         | 👨‍🔬       | ❌       | ❌              | ❌      |
 | [CSRF](security/csrf.md)                                       | ❌       | ❌       | 👨‍🔬              | ❌      |
 | [SQL-инъекции](security/sql-injections.md)                     | ❌       | ❌       | ❌              | 👨‍🔬      |
-| [Асинхронность](python/common/async.md)                        | ❌       | 👨‍🔬       | ❌              | ❌      |
-| [Мультипоточность](python/common/threading)                    | ❌       | 👨‍🔬       | ❌              | ❌      |
+| [Асинхронность](python/common/async.md)                        | ✅       | 👨‍🔬       | ❌              | ❌      |
 | [GIL](python/common/threading/gil.md)                          | ✅       | 👨‍🔬       | ❌              | ❌      |
 | [Генераторы](python/common/generators.md)                      | ✅       | 👨‍🔬       | ❌              | ❌      |
 | [Декораторы](python/common/decorators.md)                      | ✅       | 👨‍🔬       | ❌              | ❌      |
@@ -51,18 +50,18 @@
 | [Функциональные элементы](python/common/functional.md)         | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [Классы](python/common/classes)                                | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [Метаклассы](python/common/classes/metaclasses.md)             | ✅       | 👨‍🔬       | ❌              | ❌      |
-| [Датаклассы](python/common/classes/dataclasses.md)             | ❌       | 👨‍🔬       | ❌              | ❌      |
+| [Датаклассы](python/common/classes/dataclasses.md)             | ✅       | 👨‍🔬       | ❌              | ❌      |
 | [Память](python/perfomance/memory.md)                          | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [Общее](python/perfomance/init.md)                             | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [Иммутабельность](python/perfomance/immutables.md)             | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [C-расширения](python/perfomance/c.md)                         | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [Стандартные решения](python/perfomance/standart.md)           | ❌       | 👨‍🔬       | ❌              | ❌      |
 | [Сахар](python/sugar.md)                                       | ❌       | 👨‍🔬       | ❌              | ❌      |
-| [3.7](python/versions/3.7.md)                                  | ❌       | 👨‍🔬       | ❌              | ❌      |
-| [3.8](python/versions/3.8.md)                                  | ❌       | 👨‍🔬       | ❌              | ❌      |
-| [3.9](python/versions/3.9.md)                                  | ❌       | 👨‍🔬       | ❌              | ❌      |
-| [3.10](python/versions/3.10.md)                                | ❌       | 👨‍🔬       | ❌              | ❌      |
-| [3.11](python/versions/3.11.md)                                | ❌       | 👨‍🔬       | ❌              | ❌      |
+| [3.7](python/versions/3.7.md)                                  | 👨‍🔬       | 👨‍🔬       | ❌              | ❌      |
+| [3.8](python/versions/3.8.md)                                  | 👨‍🔬       | 👨‍🔬       | ❌              | ❌      |
+| [3.9](python/versions/3.9.md)                                  | 👨‍🔬       | 👨‍🔬       | ❌              | ❌      |
+| [3.10](python/versions/3.10.md)                                | 👨‍🔬       | 👨‍🔬       | ❌              | ❌      |
+| [3.11](python/versions/3.11.md)                                | 👨‍🔬       | 👨‍🔬       | ❌              | ❌      |
 | [Брокеры. Общее](brokers/common.md)                            | 👨‍🔬       | ❌       | ❌              | ❌      |
 | [RabbitMQ](brokers/rabbitmq.md)                                | 👨‍🔬       | ✅       | ❌              | ❌      |
 | [Exchanges](brokers/rabbitmq/exchanges.md)                     | 👨‍🔬       | ✅       | ❌              | ❌      |

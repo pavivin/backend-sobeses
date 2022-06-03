@@ -16,14 +16,13 @@ __Принцип единственной обязанности__
 
 Пример:
 ```python
-# Возможно убрать лишнее: staticmethod, запрос в ORM
+# Возможно запрос в ORM для простоты
 class OrdersReport:
     def get_orders_info(cls, start_date, end_date):
         orders = cls._db_orders_query(start_date, end_date)
         return cls._format(orders)
 
-    @staticmethod
-    def _db_orders_query(start_date, end_date):
+    def _db_orders_query(self, start_date, end_date):
         return DB.fetch(
             """
                 SELECT * FROM ORDERS
@@ -32,8 +31,7 @@ class OrdersReport:
             {"start_date": start_date, "end_date": end_date},
         )
 
-    @staticmethod
-    def _format(orders):
+    def _format(self, orders):
         return f'<h1>{orders}</h1>'
 ```
 
@@ -59,21 +57,18 @@ class OrdersReport:
 
 
 class OrdersOutputInterface(ABC):
-    @staticmethod
     @abstractmethod
-    def output(orders):
+    def output(self, orders):
         ...
 
 
 class HtmlOutput(OrdersOutputInterface):
-    @staticmethod
-    def output(orders):
+    def output(self, orders):
         return f"<h1>{orders}</h1>"
 
 
 class OrdersRepository:
-    @staticmethod
-    def get_orders_with_date(start_date, end_date):
+    def get_orders_with_date(self, start_date, end_date):
         return DB.fetch(
             """
                 SELECT * FROM ORDERS
@@ -108,8 +103,7 @@ class Circle:
 
 
 class AreaCalculator:
-    @staticmethod
-    def calculate(shape):
+    def calculate(self, shape):
         if isinstance(shape, Rectangle):
             area = shape.width * shape.height
         else:
@@ -151,8 +145,7 @@ class Circle:
         return shape.radius * shape.radius * math.pi
 
 class AreaCalculator:
-    @staticmethod
-    def calculate(shape):
+    def calculate(self, shape):
         return shape.calculate_area()
 ```
 Теперь можно найти площадь круга, не меняя класс AreaCalculator.
@@ -181,21 +174,18 @@ from abc import ABC, abstractmethod
 
 
 class LessonRepositoryInterface(ABC):
-    @staticmethod
     @abstractmethod
-    def get_all():
+    def get_all(self):
         ...
 
 
 class FileLessonRepository(LessonRepositoryInterface):
-    @staticmethod
-    def get_all():
+    def get_all(self):
         return []
 
 
 class DbLessonRepository(LessonRepositoryInterface):
-    @staticmethod
-    def get_all():
+    def get_all(self):
         """
         Нарушает LSP потому что:
         - другой возвращаемый тип
@@ -222,34 +212,28 @@ from abc import ABC, abstractmethod
 
 
 class WorkerInterface(ABC):
-    @staticmethod
     @abstractmethod
-    def work():
+    def work(self):
         ...
 
-    @staticmethod
     @abstractmethod
-    def sleep():
+    def sleep(self):
         ...
 
 
 class HumanWorker(WorkerInterface):
-    @staticmethod
-    def work():
+    def work(self):
         print("Пьёт кофе")
 
-    @staticmethod
-    def sleep():
+    def sleep(self):
         print("Дрыхнет")
 
 
 class RobotWorker(WorkerInterface):
-    @staticmethod
-    def work():
+    def work(self):
         print("Работает")
 
-    @staticmethod
-    def sleep():
+    def sleep(self):
         ...  # Роботу не нужно спать
 ```
 
@@ -261,32 +245,27 @@ from abc import ABC, abstractmethod
 
 
 class WorkAbleInterface(ABC):
-    @staticmethod
     @abstractmethod
-    def work():
+    def work(self):
         ...
 
 
 class SleepAbleInterface(ABC):
-    @staticmethod
     @abstractmethod
-    def sleep():
+    def sleep(self):
         ...
 
 
 class HumanWorker(WorkAbleInterface, SleepAbleInterface):
-    @staticmethod
-    def work():
+    def work(self):
         print("Пьёт кофе")
 
-    @staticmethod
-    def sleep():
+    def sleep(self):
         print("Дрыхнет")
 
 
 class RobotWorker(WorkAbleInterface):
-    @staticmethod
-    def work():
+    def work(self):
         print("Работает")
 
 ```
@@ -326,13 +305,11 @@ class PasswordReminder:
 from abc import ABC, abstractmethod
 
 class ConnectionInterface(ABC):
-    @staticmethod
     @abstractmethod
-    def connect():
+    def connect(self):
         ...
 
 class DbConnection(ConnectionInterface):
-    @staticmethod
     def connect(self):
         print('Postgres Connection')
 

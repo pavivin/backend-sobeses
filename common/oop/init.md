@@ -223,7 +223,7 @@ class LaserGun(IWeapon):
         # имплементация выстрела лазером
 
 
-class NuclearReactor() : IEnergyGenerator
+class NuclearReactor(IEnergyGenerator): 
 
     def generate_energy():
         # имплементация генерации энергии ядерным реактором
@@ -250,18 +250,18 @@ class Lidar(IScanner):
     
 
 class Transformer():
-    def install_weapon(IWeapon weapon)
+    def install_weapon(IWeapon weapon):
         self.slot_weapon = weapon
 
-    def install_energy_generator(energy_generator: IEnergyGenerator)
+    def install_energy_generator(energy_generator: IEnergyGenerator):
         self.slot_energy_generator = energy_generator
 
-    def install_scanner(IScanner scanner)
+    def install_scanner(scanner: IScanner):
         self.slot_scanner = scanner
 
 
 class TransformerFactory():
-    def build_some_transformer()
+    def build_some_transformer():
        	transformer = Transformer()
        	laser_gun = LaserGun()
        	nuclear_reactor = NuclearReactor()

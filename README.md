@@ -18,10 +18,10 @@
 
 
 ## [Общее](common)
-* [ООП](common/oop.md) (В процессе)
-* [SOLID](common/solid.md) (Не готов)
+* [ООП](common/oop/init.md) (Ревью)
+* [SOLID](common/solid.md) (Ревью)
 * [Архитектурные паттерны](common/architecture-patterns)
-  * [MVC](common/architecture-patterns/mvc.md) (В процессе)
+  * [MVC](common/architecture-patterns/mvc.md) (Ревью)
 * [Структурные паттерны](common/structure-patterns) (В процессе)
 * [Методологии разработки](common/methodology)
   * [TDD](common/methodology/tdd.md) (Не готов)

@@ -45,7 +45,7 @@
 
 ## [Безопасность](security)
 * [JWT](security/jwt.md) (Не готов)
-* [SSL](security/ssl.md) (Не готов)
+* [SSL](security/ssl.md) (Ревью)
 * [CSRF](security/csrf.md) (Не готов)
 * [SQL-инъекции](security/sql-injections.md) (Не готов)
 
@@ -80,6 +80,8 @@
 
 ## [Брокеры сообщений](brokers)
 * [Общее](brokers/common.md) (Проверка)
-* [RabbitMQ](brokers/rabbitmq.md) (В процессе)
+* [RabbitMQ](brokers/rabbitmq)
+  * [Введение](brokers/rabbitmq/init.md)
   * [Exchanges](brokers/rabbitmq/exchanges.md) (Проверен)
-* [Kafka](brokers/kafka.md) (В процессе)
+* [Kafka](brokers/kafka) (В процессе)
+  * [Введение](brokers/kafka/init.md)

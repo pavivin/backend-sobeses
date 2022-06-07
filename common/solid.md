@@ -8,6 +8,7 @@
   - [Dependency Inversion Principle^](#dependency-inversion-principle)
 
 ## Single Responsibility Principle[^](#single-responsibility-principle)
+
 __Принцип единственной обязанности__
 
     Существует лишь одна причина, приводящая к изменению класса.
@@ -15,6 +16,7 @@ __Принцип единственной обязанности__
 Один класс должен решать только какую-то одну задачу. Он может иметь несколько методов, но они должны использоваться лишь для решения общей задачи. Все методы и свойства должны служить одной цели. Если класс имеет несколько назначений, его нужно разделить на отдельные классы.
 
 Пример:
+
 ```python
 # Возможно запрос в ORM для простоты
 class OrdersReport:
@@ -40,7 +42,6 @@ class OrdersReport:
 Также данный класс не должен отвечать за формат следующего метода, потому что нам могут понадобиться данные другого формата, например, XML, JSON, HTML и т.д.
 
 Код после рефакторинга будет выглядеть так:
-
 
 ```python
 from abc import ABC, abstractmethod
@@ -79,6 +80,7 @@ class OrdersRepository:
 ```
 
 ## Open-closed Principle[^](#open-closed-principle)
+
 __Принцип открытости/закрытости__
 
     Программные сущности должны быть открыты для расширения, но закрыты для модификации.
@@ -148,9 +150,11 @@ class AreaCalculator:
     def calculate(self, shape):
         return shape.calculate_area()
 ```
+
 Теперь можно найти площадь круга, не меняя класс AreaCalculator.
 
 ## Liskov Substitution Principle[^](#liskov-substitution-principle)
+
 __Принцип подстановки Барбары Лисков__
 
 В удобочитаемой версии повторяется практически всё, что говорил Бертранд Майер, но здесь в качестве базиса взята система типов:
@@ -197,6 +201,7 @@ class DbLessonRepository(LessonRepositoryInterface):
 ```
 
 ## Interface Segregation Principle[^](#interface-segregation-principle)
+
 __Принцип разделения интерфейса__
 
     Нельзя заставлять клиента реализовать интерфейс, которым он не пользуется.
@@ -239,7 +244,6 @@ class RobotWorker(WorkerInterface):
 
 __RobotWorker__’у не нужно спать, но класс должен реализовать метод sleep, потому что все методы в интерфейсе абстрактны. Это нарушает принцип разделения. Вот как это можно исправить:
 
-
 ```python
 from abc import ABC, abstractmethod
 
@@ -271,6 +275,7 @@ class RobotWorker(WorkAbleInterface):
 ```
 
 ## Dependency Inversion Principle[^](#dependency-inversion-principle)
+
 __Принцип инверсии зависимостей__
 
     Высокоуровневые модули не должны зависеть от низкоуровневых. Оба вида модулей должны зависеть от абстракций.

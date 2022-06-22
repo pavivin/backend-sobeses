@@ -66,7 +66,7 @@
     * [Датаклассы](python/common/classes/dataclasses.md) (Проверен)
     * Методы (Не готов)
 * [Производительность](python/perfomance)
-  * [Память](python/perfomance/memory.md) (В процессе)
+  * [Память](python/perfomance/memory.md) (Ревью)
   * [Общее](python/perfomance/init.md) (В процессе)
   * [Иммутабельность](python/perfomance/immutables.md) (В процессе)
   * [C-расширения](python/perfomance/c.md) (В процессе)

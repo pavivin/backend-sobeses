@@ -324,5 +324,3 @@ class PasswordReminder:
 ```
 
 Здесь нам нужно изменить подключение с PostgresConnection на MongoDBConnection. Нам не нужно менять внедрение конструктора в класс PasswordReminder, потому что в данном случае класс PasswordReminder зависит только от абстракции.
-
-[Источник](https://habr.com/ru/company/vk/blog/412699/)

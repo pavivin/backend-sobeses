@@ -39,7 +39,6 @@
 * [Socket](web/socket.md) (Не готов)
 * [Polling](web/polling.md) (Не готов)
 * [HTTP](web/http.md) (Не готов)
-  * [HTTP/2 сервис](web/http2.0-service)
 * [CORS](web/cors.md) (Не готов)
 * [Throttle](web/throttle.md) (Не готов)
   * [Debouncing](web/throttle.md)

@@ -41,7 +41,7 @@ GraphiQL – пользовательский интерфейс, использ
 
 Рассмотрим следующие типы для актеров и фильмов:
 
-```cython
+```python
 type Actor {  
   id: ID!
   name: String!
@@ -65,7 +65,7 @@ type Movie {
 ### Создание запросов
 Запрос указывает, какие данные могут быть получены и что требуется для этого:
 
-```cython
+```python
 type Query {  
   actor(id: ID!): Actor
   movie(id: ID!): Movie
@@ -85,11 +85,12 @@ Inputs — специальные типы используются только
 Payloads — обычные типы, но по соглашению мы используем их в качестве выходных данных для мутации, поэтому мы можем легко расширять их по мере развития API.
 Первое, что мы делаем, это создадим типы Input:
 
-```cython
+```python
 input ActorInput {  
   id: ID
   name: String!
 }
+
 input MovieInput {  
   id: ID
   title: String
@@ -103,6 +104,7 @@ type ActorPayload {
   ok: Boolean
   actor: Actor
 }
+
 type MoviePayload {  
   ok: Boolean
   movie: Movie
@@ -113,7 +115,7 @@ type MoviePayload {
 
 Тип Mutation объединяет все это:
 
-```cython
+```python
 type Mutation {  
   createActor(input: ActorInput) : ActorPayload
   createMovie(input: MovieInput) : MoviePayload
@@ -133,7 +135,7 @@ type Mutation {
 Определение схемы
 Наконец, мы сопоставляем созданные нами запросы и мутации с окончательной схемой:
 
-```cython
+```python
 schema {  
   query: Query
   mutation: Mutation
@@ -151,7 +153,7 @@ GraphQL не зависит от платформы, можно создать �
 
 Используя терминал, войдите в свое рабочее пространство и создайте следующую папку:
 
-```cython
+```python
 $ mkdir django_graphql_movies
 $ cd django_graphql_movies/
 Теперь создайте виртуальную среду:
@@ -178,20 +180,22 @@ $ (django_graphql_movies) bash-3.2$ django-admin.py startapp movies
 
 Внесите следующие измения в файл movies/models.py:
 
-```cython
+```python
 from django.db import models
+
+
 class Actor(models.Model):
     name = models.CharField(max_length=100)
-    def __str__(self):
-        return self.name
+
     class Meta:
         ordering = ('name',)
+
+
 class Movie(models.Model):
     title = models.CharField(max_length=100)
     actors = models.ManyToManyField(Actor)
     year = models.IntegerField()
-    def __str__(self):
-        return self.title
+
     class Meta:
         ordering = ('title',)
 ```
@@ -200,7 +204,7 @@ class Movie(models.Model):
 
 Теперь мы можем зарегистрировать наше приложение фильмов Movie в проекте. Перейдите в django_graphql_movies/settings.py и измените INSTALLED_APPS следующим образом:
 
-```cython
+```python
 INSTALLED_APPS = [  
     'django.contrib.admin',
     'django.contrib.auth',
@@ -214,14 +218,14 @@ INSTALLED_APPS = [
 
 Обязательно запустите миграцию базы данных, чтобы синхронизировать ее с изменениями нашего кода:
 
-```cython
+```python
 (django_graphql_movies) bash-3.2$ python manage.py makemigrations
 (django_graphql_movies) bash-3.2$ python manage.py migrate
 ```
 Загрузка данных теста
 После того, как мы создадим наше API, мы хотим иметь возможность выполнить запросы, чтобы проверить, работает ли оно. Давайте сейчас загрузим некоторые данные в нашу базу данных. Для этого сохраните следующий JSON как movies.json в корневом каталоге вашего проекта:
 
-```cython
+```python
 [
   {
     "model": "movies.actor",
@@ -259,14 +263,19 @@ Installed 3 object(s) from 1 fixture(s)
 Создание запросов
 В нашей папке приложения для фильмов (movies) создайте новый файл schema.py . Далее с помощью следующего кода определим наши типы GraphQL:
 
-```cython
+```python
 import graphene
+
 from graphene_django.types import DjangoObjectType, ObjectType
 from movies.models import Actor, Movie
+
+
 # Create a GraphQL type for the actor model
 class ActorType(DjangoObjectType):
     class Meta:
         model = Actor
+
+
 # Create a GraphQL type for the movie model
 class MovieType(DjangoObjectType):
     class Meta:
@@ -277,25 +286,33 @@ class MovieType(DjangoObjectType):
 
 В том же файле добавьте следующий код для создания типа Query:
 
-```cython
+```python
 # Create a Query type
 class Query(ObjectType):
     actor = graphene.Field(ActorType, id=graphene.Int())
     movie = graphene.Field(MovieType, id=graphene.Int())
     actors = graphene.List(ActorType)
     movies = graphene.List(MovieType)
+
     def resolve_actor(self, info, **kwargs):
         id = kwargs.get('id')
+
         if id is not None:
             return Actor.objects.get(pk=id)
+
         return None
+
     def resolve_movie(self, info, **kwargs):
         id = kwargs.get('id')
+
         if id is not None:
             return Movie.objects.get(pk=id)
+
         return None
+
     def resolve_actors(self, info, **kwargs):
         return Actor.objects.all()
+
     def resolve_movies(self, info, **kwargs):
         return Movie.objects.all()
 ```
@@ -311,11 +328,13 @@ class Query(ObjectType):
 ### Мутации
 Когда мы проектировали схему, мы сначала создали специальные типы ввода для наших мутаций. Давайте сделаем то же самое с Graphene, добавьте это код в schema.py:
 
-```cython
+```python
 # Create Input Object Types
 class ActorInput(graphene.InputObjectType):
     id = graphene.ID()
     name = graphene.String()
+
+
 class MovieInput(graphene.InputObjectType):
     id = graphene.ID()
     title = graphene.String()
@@ -327,25 +346,32 @@ class MovieInput(graphene.InputObjectType):
 
 Создание мутаций требует немного больше работы, чем создание запросов. Давайте добавим мутации для актеров:
 
-```cython
+```python
+# Create mutations for actors
 # Create mutations for actors
 class CreateActor(graphene.Mutation):
     class Arguments:
         input = ActorInput(required=True)
+
     ok = graphene.Boolean()
     actor = graphene.Field(ActorType)
+
     @staticmethod
     def mutate(root, info, input=None):
         ok = True
         actor_instance = Actor(name=input.name)
         actor_instance.save()
         return CreateActor(ok=ok, actor=actor_instance)
+
+
 class UpdateActor(graphene.Mutation):
     class Arguments:
         id = graphene.Int(required=True)
         input = ActorInput(required=True)
+
     ok = graphene.Boolean()
     actor = graphene.Field(ActorType)
+
     @staticmethod
     def mutate(root, info, id, input=None):
         ok = False
@@ -371,13 +397,16 @@ createActor(input: ActorInput) : ActorPayload
 Класс UpdateActor имеет аналогичную структуру с дополнительной логикой для извлечения обновляемого актера и изменения его свойств перед сохранением.
 
 Теперь давайте добавим мутацию для фильмов:
-```cython
+```python
+# Create mutations for movies
 # Create mutations for movies
 class CreateMovie(graphene.Mutation):
     class Arguments:
         input = MovieInput(required=True)
+
     ok = graphene.Boolean()
     movie = graphene.Field(MovieType)
+
     @staticmethod
     def mutate(root, info, input=None):
         ok = True
@@ -394,12 +423,16 @@ class CreateMovie(graphene.Mutation):
         movie_instance.save()
         movie_instance.actors.set(actors)
         return CreateMovie(ok=ok, movie=movie_instance)
+
+
 class UpdateMovie(graphene.Mutation):
     class Arguments:
         id = graphene.Int(required=True)
         input = MovieInput(required=True)
+
     ok = graphene.Boolean()
     movie = graphene.Field(MovieType)
+
     @staticmethod
     def mutate(root, info, id, input=None):
         ok = False
@@ -429,7 +462,7 @@ class UpdateMovie(graphene.Mutation):
 Вот почему мы сохраняем наш фильм с movie_instance.save() перед тем, как установить для него актеров с помощью movie_instance.actors.set(actors).
 
 Чтобы завершить наши мутации, создадим тип мутации (класс Mutation):
-```cython
+```python
 class Mutation(graphene.ObjectType):
     create_actor = CreateActor.Field()
     update_actor = UpdateActor.Field()
@@ -440,24 +473,28 @@ class Mutation(graphene.ObjectType):
 ### Создание схемы
 Как и раньше, когда мы проектировали нашу схему, мы сопоставляем запросы и мутации с API нашего приложения. Теперь добавьте эту строку в конец файла schema.py:
 
-```cython
+```python
 schema = graphene.Schema(query=Query, mutation=Mutation)
 ```
 Регистрация схемы в проекте
 Чтобы наше API заработало, нам нужно сделать схему доступной для всего проекта.
 
 Создайте новый файл schema.py в каталоге django_graphql_movies/ и добавьте в него следующее:
-```cython
+```python
 import graphene
 import movies.schema
+
+
 class Query(movies.schema.Query, graphene.ObjectType):
     # This class will inherit from multiple Queries
     # as we begin to add more apps to our project
     pass
+
 class Mutation(movies.schema.Mutation, graphene.ObjectType):
     # This class will inherit from multiple Queries
     # as we begin to add more apps to our project
     pass
+
 schema = graphene.Schema(query=Query, mutation=Mutation)
 ```
 
@@ -467,7 +504,7 @@ schema = graphene.Schema(query=Query, mutation=Mutation)
 
 В том же файле добавьте следующий код:
 
-```cython
+```python
 GRAPHENE = {  
     'SCHEMA': 'django_graphql_movies.schema.schema'
 }
@@ -477,7 +514,7 @@ API-интерфейсы GraphQL доступны через одну конеч
 
 Откройте django_graphql_movies/urls.py и измените содержимое файла на:
 
-```cython
+```python
 from django.contrib import admin
 from django.urls import path
 from graphene_django.views import GraphQLView
@@ -496,7 +533,7 @@ urlpatterns = [
 Написание запросов
 Для нашего первого запроса, давайте получим всех актеров из базы данных. В верхней левой панели введите следующее:
 
-```cython
+```python
 query getActors {  
   actors {
     id
@@ -509,7 +546,7 @@ query getActors {
 
 Несмотря на то, что у нас есть только один фильм в наших тестовых данных, давайте попробуем запрос фильма и обнаружим еще одну замечательную особенность GraphQL:
 
-```cython
+```python
 query getMovie {  
   movie(id: 1) {
     id
@@ -529,7 +566,7 @@ query getMovie {
 Написание мутаций
 Мутации следуют тому же стилю, что и запросы. Давайте добавим актера в нашу базу данных:
 
-```cython
+```python
 mutation createActor {  
   createActor(input: {
     name: "Tom Hanks"
@@ -549,7 +586,7 @@ mutation createActor {
 
 Теперь мы можем добавить фильм, в котором снялся Том Хэнкс:
 
-```cython
+```python
 mutation createMovie {  
   createMovie(input: {
     title: "Cast Away",
@@ -578,7 +615,7 @@ mutation createMovie {
 
 Давайте запустим запрос на обновление, чтобы исправить это:
 
-```cython
+```python
 mutation updateMovie {  
   updateMovie(id: 2, input: {
     title: "Cast Away",
@@ -612,7 +649,7 @@ IDE GraphiQL очень полезна во время разработки, н�
 
 Приложение, взаимодействующее с API, должно отправлять POST-запросы в /graphql. Прежде чем мы сможем отправлять POST-запросы извне сайта Django, нам нужно опять изменить django_graphql_movies/urls.py:
 
-```cython
+```python
 from django.contrib import admin  
 from django.urls import path  
 from graphene_django.views import GraphQLView  
@@ -629,7 +666,7 @@ urlpatterns = [
 
 Давай те проверим работу POST запросов. Для этого в своем терминале введите следующую команду, чтобы получить всех актеров:
 
-```cython
+```python
 (django_graphql_movies) bash-3.2$ curl \
   -X POST \
   -H "Content-Type: application/json" \
@@ -637,7 +674,15 @@ urlpatterns = [
   http://127.0.0.1:8000/graphql/
 Вы должны получить:
 
-{"data":{"actors":[{"name":"Michael B. Jordan"},{"name":"Sylvester Stallone"},{"name":"Tom Hanks"}]}}
+{
+    "data": {
+        "actors": [
+            {"name": "Michael B. Jordan"},
+            {"name": "Sylvester Stallone"},
+            {"name": "Tom Hanks"}
+        ]
+    }
+}
 ```
 
 ### Заключение
